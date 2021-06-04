@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask_socketio import SocketIO, send, emit, join_room
+from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
@@ -38,10 +38,13 @@ def user_connect(data):
 		# Room doesn't exist
 		emit("status_message", "This room doesn't exist")
 
-@socket.io("disconnect_user")
+@socketio.on("disconnect_user")
 def disconnect_user(data):
 	global rooms
 	rooms[data['room']]['members'].pop(data['username'])
+	if not rooms[data['room']]['members']:
+		rooms.pop(data['room'])
+	leave_room(data['room'])
 	emit("edit_members", {"members": list(rooms[data['room']]['members'].keys())}, to=data['room'], broadcast=True)
 
 

@@ -20,10 +20,10 @@ class Form extends Component {
     onChange = (e) => this.setState({[e.target.name]: e.target.value});
     render(){
         return(
-            <div className={"form-container " + this.props.form_style}>
+            <div className={"form-container"}>
                 <form className="form" onSubmit={this.onSubmit}>
-                    <div className="form-input-border">
-                        <input
+                    <text className="form-heading">{this.props.submit_text}</text>
+                    <input
                         type="text"
                         name="username"
                         className="form-input-text"
@@ -31,10 +31,8 @@ class Form extends Component {
                         value={this.state.username}
                         onChange={this.onChange}
                         required
-                        />
-                    </div>
-                    <div className="form-input-border">
-                        <input
+                    />
+                    <input
                         type="text"
                         name="room"
                         className="form-input-text"
@@ -42,10 +40,8 @@ class Form extends Component {
                         value={this.state.room}
                         onChange={this.onChange}
                         required
-                        />
-                    </div>
-                    <div className="form-input-border">
-                        <input
+                    />
+                    <input
                         type="password"
                         name="room_password"
                         className="form-input-text"
@@ -53,8 +49,7 @@ class Form extends Component {
                         value={this.state.room_password}
                         onChange={this.onChange}
                         required
-                        />
-                    </div>
+                    />
                     <input
                     type="submit"
                     className="form-submit"
@@ -68,7 +63,6 @@ class Form extends Component {
 
 Form.propTypes = {
     submit_text: PropTypes.string.isRequired,
-    form_style: PropTypes.string.isRequired,
     form_submit: PropTypes.func.isRequired,
 }
 

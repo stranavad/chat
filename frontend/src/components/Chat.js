@@ -20,6 +20,7 @@ class Chat extends Component {
         });
 
     }
+
     onChange = (e) => this.setState({[e.target.name]: e.target.value});
     render(){
         return(
@@ -33,7 +34,13 @@ class Chat extends Component {
                     </div>
                     <div className="chat-right-side">
                         <div className="messages-container">
-                            <div className="room-info"><p>{this.props.room}</p></div>
+                            <div className="room-info">
+                                <p>{this.props.room}</p>
+                                <div>
+                                    <button onClick={this.props.leaveRoom} className="room-button leave">Leave</button>
+                                    <button onClick={this.props.clearConversation} className="room-button clear">Clear</button>
+                                </div>
+                            </div>
                             <div className="messages">
                                 <ShowMessages messages={this.props.messages}/>
                             </div>
@@ -53,7 +60,9 @@ Chat.propTypes = {
     username: PropTypes.string,
     members: PropTypes.array,
     room: PropTypes.string,
-    sendMessage: PropTypes.func
+    sendMessage: PropTypes.func,
+    clearConversation: PropTypes.func.isRequired,
+    leaveRoom: PropTypes.func.isRequired,
 }
 
 export default Chat;

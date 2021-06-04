@@ -16,8 +16,8 @@ class ChatPage extends Component {
             endpoint: "http://localhost:5000",
             forms_component:
                 <div className="forms-div">
-                    <Form submit_text="Connect" form_style="connect-form" form_submit={this.connectRoom}/>
-                    <Form submit_text="Create" form_style="create-form" form_submit={this.createRoom}/>
+                    <Form submit_text="Connect" form_submit={this.connectRoom}/>
+                    <Form submit_text="Create" form_submit={this.createRoom}/>
                 </div>,
             chat_component: '',
             status_message: '',
@@ -59,10 +59,11 @@ class ChatPage extends Component {
         });
         //this.socket.disconnect();
         this.socket.on("disconnect", function(){
-            this.socket.emit("disconnect_user", {
-                username: this.state.username,
-                room: this.state.room
-            })
+            console.log("Socket disconnected");
+            //this.socket.emit("disconnect_user", {
+                //username: this.state.username,
+                //room: this.state.room
+            //})
         });
     }
 
@@ -80,11 +81,29 @@ class ChatPage extends Component {
     } 
     // TODO connect these two into one
 
+    clearConversation = () => {
+        this.setState({messages: []});
+    }
+
+    leaveRoom = () => {
+        this.socket.emit("disconnect_user", {username: this.state.username, room: this.state.room});
+        this.setState({
+            connected: false,
+            username: '',
+            room: '',
+            room_password: '',
+            members: [],
+            messages: []
+        });
+        //this.socket.close();
+        //this.socket = io.connect("http://localhost:5000", { reconnect: true, transports: ['polling', 'websocket']});
+    }
+
 
     render(){
         let component;
         if (this.state.connected){
-            component = <Chat username={this.state.username} room={this.state.room} members={this.state.members} messages={this.state.messages} sendMessage={this.sendMessage}/>;
+            component = <Chat username={this.state.username} room={this.state.room} members={this.state.members} messages={this.state.messages} sendMessage={this.sendMessage} clearConversation={this.clearConversation} leaveRoom={this.leaveRoom}/>;
         } else {
             component = this.state.forms_component;
         }
