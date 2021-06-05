@@ -37,7 +37,7 @@ body,
   align-items: center;
   padding: 1em;
   color: white;
-  font-family: 'Odibee Sans', cursive;
+  font-family: "Odibee Sans", cursive;
 }
 
 .menu-logo a {
@@ -62,7 +62,7 @@ body,
   text-decoration: none;
   letter-spacing: 1px;
   font-size: 1.75em;
-  margin-left: 1em
+  margin-left: 1em;
 }
 
 /* Connect/Create forms */
@@ -82,13 +82,12 @@ body,
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
-  font-family: 'Odibee Sans', cursive;
+  font-family: "Odibee Sans", cursive;
 }
 
 .form-container:hover {
   background-color: rgba(0, 0, 0, 1);
 }
-
 
 .form-container .form {
   height: 100%;
@@ -110,7 +109,7 @@ body,
   border: solid 1px white;
   background-color: transparent;
   color: white;
-  font-family: 'Odibee Sans', cursive;
+  font-family: "Odibee Sans", cursive;
 }
 
 .form-input-text:placeholder-shown {
@@ -128,12 +127,13 @@ body,
   font-size: 1.7em;
 }
 
-.form-heading,.form-submit {
+.form-heading,
+.form-submit {
   font-weight: bolder;
   background: none;
   border: none;
   color: white;
-  font-family: 'Odibee Sans', cursive;
+  font-family: "Odibee Sans", cursive;
   letter-spacing: 2px;
 }
 
@@ -150,10 +150,18 @@ body,
 }
 
 .chat {
-  width: 800px;
-  height: 800px;
-  border: 2px solid #15CAF1;
-  border-radius: 10px;
+  max-width: 1000px;
+  max-height: 1000px;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 2px solid black;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.chat:hover {
+  background-color: black;
 }
 
 .horizontal-flex {
@@ -163,18 +171,16 @@ body,
 }
 
 .members-container {
-  width: 300px;
+  width: 25%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-right: 2px solid #15CAF1;
 }
 
 .members-info {
-  height: 34px;
+  height: 50px;
   width: 100%;
-  padding-left: 1em;
-  border-bottom: 2px solid #15CAF1;
+  padding-left: 2em;
   display: flex;
   align-items: center;
 }
@@ -182,7 +188,7 @@ body,
 .members {
   width: 100%;
   height: 766px;
-  padding: 1em;
+  padding: 2em;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -194,7 +200,7 @@ body,
 }
 
 .chat-right-side {
-  width: 500px;
+  width: 75%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -202,7 +208,7 @@ body,
 
 .messages-container {
   width: 100%;
-  height: 750px;
+  height: 92%;
 }
 
 .messages {
@@ -210,13 +216,13 @@ body,
   height: 710px;
   padding: 1em;
   overflow-y: auto;
+  background-color: rgb(20, 20, 20);
 }
 
 .room-info {
-  height: 34px;
+  height: 50px;
   width: 100%;
   padding: 0em 1em;
-  border-bottom: 2px solid #15CAF1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -230,23 +236,58 @@ body,
   font-size: 0.9em;
 }
 
-.room-button.leave {
-  background-color: #ed15f1;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
+.room-button.leave,
 .room-button.clear {
-  background-color: #15caf1;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: white;
+  background: none;
 }
 
+.room-button.leave:hover {
+  color: red;
+}
+
+.room-button.clear:hover {
+  color: green;
+}
+
+/* Send message */
+/*              */
 .send-message-container {
   width: 100%;
-  height: 50px;
-  border-top: 2px solid #15CAF1;
+  height: 8%;
   padding: 1em;
 }
+
+.form-message {
+  min-width: 50%;
+  max-width: 80%;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 10px;
+  border: solid 1px white;
+  background-color: transparent;
+  color: white;
+}
+
+.form-message::placeholder {
+  font-size: 1em;
+  color: rgb(153, 153, 153);
+}
+
+.form-message:placeholder-shown {
+  border: solid 1px rgb(153, 153, 153);
+}
+
+.send-button {
+  cursor: pointer;
+  margin-left: 2em;
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.5em;
+}
+.send-button:hover {
+  color: rgb(139, 139, 139);
+}
+
+/* */
