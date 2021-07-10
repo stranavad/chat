@@ -36,29 +36,30 @@ class Chat extends Component {
             <div className="members">
               <ShowMembers members={this.props.members} />
             </div>
+            <div className="in-chat-logo">
+              <text>The Space</text>
+            </div>
           </div>
           <div className="chat-right-side">
-            <div className="messages-container">
-              <div className="room-info">
-                <p>{this.props.room}</p>
-                <div>
-                  <button
-                    onClick={this.props.leaveRoom}
-                    className="room-button leave"
-                  >
-                    Leave
-                  </button>
-                  <button
-                    onClick={this.props.clearConversation}
-                    className="room-button clear"
-                  >
-                    Clear
-                  </button>
-                </div>
+            <div className="room-info">
+              <p>{this.props.room}</p>
+              <div>
+                <button
+                  onClick={this.props.leaveRoom}
+                  className="room-button leave"
+                >
+                  Leave
+                </button>
+                <button
+                  onClick={this.props.clearConversation}
+                  className="room-button clear"
+                >
+                  Clear
+                </button>
               </div>
-              <div className="messages">
-                <ShowMessages messages={this.props.messages} />
-              </div>
+            </div>
+            <div className="messages">
+              <ShowMessages messages={this.props.messages} />
             </div>
             <div className="send-message-container">
               <SendMessage sendMessage={this.props.sendMessage} />

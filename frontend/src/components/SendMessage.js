@@ -17,12 +17,12 @@ class SendMessage extends Component {
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
   render() {
     return (
-      <form className="message-container" onSubmit={this.onSubmit}>
+      <form className="message-container" onSubmit={this.onSubmit} autoComplete="off">
         <input
           type="text"
           name="message"
           className="form-message"
-          placeholder="Message"
+          placeholder="Type your message here..."
           value={this.state.message}
           onChange={this.onChange}
           required
